@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { MdAddShoppingCart } from 'react-icons/md';
 import api from '../../services/api';
 import { formatPrice } from '../../util/format';
+import * as CartActions from '../../store/modules/cart/actions';
 
 import { ProductList } from './styles';
 
@@ -27,10 +28,7 @@ class Home extends Component {
     handleAddProduct = product => {
         const { dispatch } = this.props;
 
-        dispatch({
-            type: 'ADD_TO_CART',
-            product,
-        });
+        dispatch(CartActions.addToCart(product));
     };
 
     render() {
